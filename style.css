@@ -1,0 +1,265 @@
+body {
+  margin: 0;
+  padding: 0;
+
+}
+
+h1 {
+
+  font-family: 'Fjalla One', sans-serif;
+  color: #FF6969;
+  font-size: 6vw;
+
+}
+
+h2 {
+
+  font-family: 'Fjalla One', sans-serif;
+  color: #FF6969;
+  font-size: 2vw;
+  margin-top: 2%;
+
+}
+
+h3 {
+
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5vw;
+  color: #939393;
+
+}
+
+p {
+
+  font: 300 26px "Inter", sans-serif;
+  font-size: 0.8vw;
+  color: #acacac;
+
+}
+  .node {
+      font: 300 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+      fill: #9d9d9d;
+    }
+    
+    .node:hover {
+      font-size: 14px;
+      fill: #AAAA00;
+    }
+    
+    .link {
+      stroke: #868686;
+      stroke-opacity: 0.05;
+      fill: none;
+      pointer-events: none;
+    }
+    
+    .node:hover,
+    .node--source,
+    .node--target {
+      font-weight: 700;
+    }
+    
+    .node--source {
+      fill: #FF6969;
+      text-decoration: underline;
+    }
+  
+    .node--target {
+      fill: #FF6969;
+      text-decoration: underline;
+    }
+    
+    .link--source,
+    .link--target {
+      stroke-opacity: 0.1;
+      stroke-width: 1px;
+    }
+    
+    .link--source {
+      stroke: #FF6969;
+      stroke-opacity: 0.4;
+    }
+    
+    .link--target {
+      stroke: #FF6969;
+      stroke-opacity: 0.4;
+    }
+
+    .myYaxis path{
+
+      stroke: #bbb; 
+
+    }
+
+    .myYaxis line{
+
+      stroke: #bbb; 
+
+    }
+
+    .myYaxis text{
+
+      fill: #bbb; 
+
+    }
+
+    .myXaxis path{
+
+      stroke: #bbb; 
+
+    }
+
+    .myXaxis line{
+
+      stroke: #bbb; 
+
+    }
+
+    .myXaxis text{
+
+      fill: #bbb; 
+
+    }
+
+    #background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    #landingheading {
+
+      text-align: left;
+      padding-left: 10%;
+
+
+    }
+
+    .image-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 20px solid white; /* Add a white border around the container */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-bottom: 16px solid #f4f4f4;
+
+}
+
+        .section1 {
+          background-image: url('Red_USSR.png');
+          background-size: auto;
+          display: flex;
+          justify-content: flex-start; 
+
+      }
+
+      .section2 {
+        background-color: #f4f4f4;
+        background-image: linear-gradient(
+        to bottom, transparent,transparent 80%, #f4f4f4), url('Frame_1.png'); 
+        background-size: cover;
+        display: flex;
+        position: relative;
+        
+
+      }
+
+      .section3 {
+
+        background-color: #f4f4f4;
+        height: 120vh;
+        
+
+
+      }
+
+
+      .rectangle {
+
+        width: 33%; /* Adjust the width as needed */
+        height: 35%; /* Adjust the height as needed */
+        background-color: #f4f4f4; /* Change the color as desired */
+        margin-right: 60px; /* Add spacing between rectangles */
+        margin-left: 60px;
+        text-align: center;
+        padding: 1%;
+
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+
+
+      }
+
+
+    .heading {
+
+      font-size: 1rem;
+      position: relative;
+      z-index: 999;
+    }
+
+    a {
+
+      color: #b5b5b5;
+      font-family: 'Inconsolata', monospace;
+      font-weight: regular;
+
+    }
+
+    #edgeBundlingContainer {
+          flex: 2; /* Let it take two-thirds of the space */
+    }
+
+    #tooltip {
+      display: none;
+      position: absolute;
+      background-color: rgba(244, 244, 244, 0.8);
+      color: white;
+      border-radius: 5px;
+      border-left: 8px solid red;
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+      box-sizing: border-box;
+      padding-left: 2%;
+      padding-bottom: 1%;
+      }
+    
+      #bottom-paragraph {
+
+          position: absolute;
+          bottom: 5%;
+          text-align: center;
+          width: 80%; 
+
+      }
+  
+    .main-heading {
+      font-size: 18px;
+    }
+    
+    .quadrant {
+      width: 50%;
+      float: left;
+      box-sizing: border-box;
+    }
+    
+    .heading {
+      font-size: 1vw;
+    }
+    
+    .value {
+      font-size: 1vw;
+      font-weight: bold;
+    }
+

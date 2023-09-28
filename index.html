@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>World Hostility Graph</title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&family=Inter:wght@800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&family=Inter:wght@400;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<!-- Color scale -->
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+<div class="section section1" >
+  <div id="landingheading"> 
+    <h1>Global Hostility <br> Net</h1>
+
+    <h2>Two centuries of worldwide wars</h2>
+  </div>
+</div>
+
+
+
+<div class="section section2">
+
+  <div class="rectangle">
+
+    <h3>Conflict is intricately woven throughout the fabric of the entire world.</h3>
+
+    <p>Between the year <span style="color: #FF6969"><b>1816</b></span> and <span style="color: #FF6969"><b>2014</b></span>, a minimum of <span style="color: #FF6969"><b>4726 conflicts</b></span> have played a pivotal role in shaping the world we inhabit today. 
+      <br><br>Many of these concluded with the utilization of military force, at least <span style="color: #FF6969"><b>270 ended in war. </b></span></p>
+
+  </div>
+
+  <div class="rectangle">
+
+    <h3>Connecting the data across 200 countries 6 continents.</h3>
+
+    <p>A few <span style="color: #FF6969"><b>international superpowers</b></span> are involved in a multitude of conflicts, reaching from conflicts close to their own borders to conflicts at the other end of the world.
+      <br> <br> Adding infromation about each countries <span style="color: #FF6969"><b>continent</b></span> enables a new and <span style="color: #FF6969"><b>holistically connected </b></span>view on the past conflicts. </p>
+
+  </div>
+
+  <p id="bottom-paragraph">Palmer, Glenn, Roseanne W. McManus, Vito D’Orazio, Michael R. Kenwick, Mikaela Karstens, Chase Bloch, Nick Dietrich, Kayla Kahn, Kellan Ritter, Michael J. Soules. 2020. “The MID5 Dataset, 2011-2014: Procedures, Coding Rules, and Description.” Conflict Management and Peace Science, 39(4): 470-482. DOI: <a href="https://journals.sagepub.com/doi/full/10.1177/0738894221995743">https://journals.sagepub.com/doi/full/10.1177/0738894221995743</a></p>
+
+</div>
+
+
+<div class="section section3">
+
+  <div id="edgeBundlingContainer" class="container">
+
+    <div id="edgeBundling" class="child"></div>
+
+    <div id="tooltip">
+      <h3 class="main-heading">Tooltip Main Heading</h3>
+
+      <div class="quadrant" id="quadrant1">
+        <h3 class="heading"></h3>
+        <p class="value"></p>
+      </div>
+
+      <div class="quadrant" id="quadrant2">
+        <h3 class="heading"></h3>
+        <p class="value"></p>
+      </div>
+      
+      <div class="quadrant" id="quadrant3">
+        <h3 class="heading"></h3>
+        <p class="value"></p>
+      </div>
+      <div class="quadrant" id="quadrant4">
+        <h3 class="heading"></h3>
+        <p class="value"></p>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+  <!--<div class="background-image"></div> -->
+
+
+
+
+  
+
+<!--
+
+  <div id ="background">
+
+    <h1>World Hostility Graph</h1>
+
+    <div id="flex-container">
+    <p id="description">Conflict is intricately woven throughout the fabric of the entire world.<br><br>
+      Between 1816 and 2014, a minimum of 4726 conflicts have played 
+      a pivotal role in shaping the world we inhabit today. 
+      Many of these concluded with the utilization of military force, some even ended in war.
+      The shares of involved nations are unequally divided. 
+      A few international superpowers are involved in a multitude of conflicts, 
+      reaching from conflicts close to their own borders to conflicts at the other end of the world.
+      <br><br><br>
+      Data provided by the correlates of war project: <br><a href="https://correlatesofwar.org/data-sets/mids/">Data Source</a>
+    </p>
+
+    <div id="edgeBundlingContainer" class="container">
+
+      <div id="edgeBundling" class="child"></div>
+
+      <div id="tooltip">
+        <h2 class="main-heading">Tooltip Main Heading</h2>
+        <div class="quadrant" id="quadrant1">
+          <h2 class="heading"></h2>
+          <p class="value"></p>
+        </div>
+        <div class="quadrant" id="quadrant2">
+          <h2 class="heading"></h2>
+          <p class="value"></p>
+        </div>
+        <div class="quadrant" id="quadrant3">
+          <h2 class="heading"></h2>
+          <p class="value"></p>
+        </div>
+        <div class="quadrant" id="quadrant4">
+          <h2 class="heading"></h2>
+          <p class="value"></p>
+        </div>
+      </div>
+
+    </div>
+
+    </div>
+
+  </div>
+
+  -->
+ 
+<script>
+
+
+
+// Size Diagramm
+var diameter = 650,
+    radius = diameter / 2,
+    innerRadius = radius - 120;
+
+// Define the circle attributes
+var outerCircleRadius = radius - 56;
+var innerCircleRadius = radius -120;
+
+
+
+
+
+var cluster = d3.cluster()
+    .size([360, innerRadius]);
+
+var line = d3.radialLine()
+    .curve(d3.curveBundle.beta(0.88))
+    .radius(function(d) { return d.y; })
+    .angle(function(d) { return d.x / 180 * Math.PI; });
+
+    
+// Window size dependend on Diagram size
+
+var svg = d3.select("#edgeBundling").append("svg")
+    .attr("width", window.innerWidth )
+    .attr("height", window.innerHeight)
+    .append("g")
+    .attr("transform", "translate(" + window.innerWidth * 0.5 + "," + diameter / 1.8  + ")");
+
+    // Create the outer circle
+svg.append("circle")
+   .attr("r", outerCircleRadius)
+   .style("fill", "rgba(235, 235, 235, 1)");
+
+// Create the inner circle to make the hole
+svg.append("circle")
+   .attr("r", innerCircleRadius)
+   .style("fill", "#f4f4f4");
+
+
+var link = svg.append("g").selectAll(".link"),
+    node = svg.append("g").selectAll(".node"),
+    linkRect = svg.append("g").selectAll(".link-rect");
+
+    const csvFile = 'MIDB.csv';
+
+
+let myScale = d3.scaleLinear()
+  .domain ([1, 110])
+  .range([1, 60]);
+
+    // Load data 
+d3.json("modified_final_data.json", function(error, classes) {
+
+  if (error) throw error;
+  var root = packageHierarchy(classes)
+      .sum(function(d) { return d.size; });
+
+      console.log(root);
+
+  cluster(root);
+
+  link = link
+    .data(packageImports(root.leaves()))
+    .enter().append("path")
+      .each(function(d) { d.source = d[0], d.target = d[d.length - 1]; })
+      .attr("class", "link")
+      .attr("d", line); 
+   
+  node = node
+    .data(root.leaves())
+    .enter().append("text")
+      .attr("class", "node")
+      .attr("dy", "0.32 em")
+      .attr("transform", function(d) {
+        return "rotate(" + (d.x - 90 + 0.2) + ")translate(" + (d.y   + 68) + ",0)" + (d.x < 180 ? "" : "rotate(180)" ); })
+      .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
+      // .style("fill", function(d){ return '#DDDDDD' }) 
+      .style('font-family', 'Inter, sans-serif')
+      .style("font-size", "9px")
+      .text(function(d) { return d.data.key; })
+      .on("mouseover", mouseovered)
+      .on("mouseout", mouseouted);
+
+      // Add rectangles for each node
+linkRect = linkRect
+  .data(root.leaves())
+  .enter().append("rect")
+    .attr("class", "link-rect")
+    .attr("transform", function(d) {
+        return "rotate(" + (d.x - 90 - 0.8) + ")translate(" + (d.y) + ",0)"; })
+    .attr("width", function(d) {
+      const searchName = d.data.name; 
+          const matchingItems = classes.filter(item => item.imports.includes(searchName));
+          var addFactor = matchingItems.length;
+          console.log(addFactor);
+      return myScale(addFactor); // Adjust the width as needed
+    })
+    .attr("height", function(d) {
+      return 7; // Adjust the height as needed
+    })
+    .style("fill", function(d){
+
+      const parts = d.data.name.split('.');
+      const desiredPart = parts[1];
+
+      if (desiredPart == "asia") {
+
+        return '#F3C16A';
+
+      }
+
+      else if (desiredPart == "northamerica") {
+
+        return '#68ADBC';
+
+      }
+
+      else if (desiredPart == "europe") {
+
+      return '#F18578';
+
+      }
+
+      else if (desiredPart == "africa") {
+
+      return '#AED08E';
+
+      }
+
+      else if (desiredPart == "southamerica") {
+
+      return '#DF6687';
+      
+      }
+
+      else if (desiredPart == "australiaoceania") {
+
+      return '#B47CB3';
+
+      }
+
+    }); 
+});
+
+function mouseovered(d) {
+
+  const parts = d.data.name.split('.');
+  const desiredPart = parts[1];
+
+  node
+      .each(function(n) { n.target = n.source = false; });
+
+  link
+      .classed("link--target", function(l) { if (l.target === d) return l.source.source = true; })
+      .classed("link--source", function(l) { if (l.source === d) return l.target.target = true; })
+    .filter(function(l) { return l.target === d || l.source === d; })
+      .raise();
+
+        node
+      .classed("node--target", function(n) { return n.target; })
+      .classed("node--source", function(n) { return n.source; });
+ 
+  var searchValue = d.data.STABB;
+  var countryColor = desiredPart; 
+  var valueArray = [];
+  var filteredData;
+  var eventX, eventY;
+
+  // Capture event coordinates before starting the asynchronous operation
+  eventX = d3.event.pageX;
+  eventY = d3.event.pageY;
+
+  // Read the CSV file and filter the lines
+    d3.csv(csvFile, (data) => {
+
+      // Filter for every conflict this specific state is involved in
+      filteredData = data.filter(d => {
+        return Object.values(d).some(value => value.includes(searchValue));
+      });
+
+      var originatorCount = 0; 
+
+      // Originator of dispute?
+      for ( i = 0; i<filteredData.length; i++){
+
+        console.log(filteredData[i].orig)
+        if (filteredData[i].orig == 1) {
+          originatorCount++; 
+        }
+      }
+
+        var hostValues = [1,2,3,4,5]; 
+    var hostpercountry = []; 
+
+    for (i = 0; i < filteredData.length; i++){
+
+      var level = filteredData[i].hostlev; 
+
+      hostpercountry.push(level);
+
+    }
+
+    function countElements(arr) {
+    var counts = {};
+
+    for (let i = 0; i < arr.length; i++) {
+      var element = arr[i];
+      if (counts[element]) {
+        counts[element] += 1;
+      } else {
+        counts[element] = 1;
+      }
+    }
+
+    return counts;
+  }
+
+
+  var elementCounts = countElements(hostpercountry);
+
+for (var i = 1; i <= 5; i++) {
+  if (typeof elementCounts[i] === 'undefined') {
+    elementCounts[i] = 0;
+  }
+}
+
+  var hostilityCounts = [
+    {group: "No militarized action", value: elementCounts[1]},
+    {group: "Threat to use force", value: elementCounts[2]},
+    {group: "Display of force", value: elementCounts[3]},
+    {group: "Use of force", value: elementCounts[4]},
+    {group: "War", value: elementCounts[5]}
+  ];
+
+  var forceCount = hostilityCounts[3].value;
+  var warCount = hostilityCounts[4].value;
+
+      var conflictsTotal = filteredData.length;
+
+      console.log(desiredPart);
+
+      // Show tooltip
+      const tooltip = d3.select("#tooltip");
+
+      if (desiredPart === "asia") {
+
+        tooltip.style("border-width", "8px");
+        tooltip.style("border-left-color", "#F3C16A");
+        
+
+      } else if (desiredPart === "europe")  {
+
+        tooltip.style("border-width", "8px");
+        tooltip.style("border-left-color", "#F96E46");
+
+      } else if (desiredPart === "northamerica")  {
+
+        tooltip.style("border-width", "8px");
+        tooltip.style("border-left-color", "#68ADBC");
+
+      }
+      else if (desiredPart === "africa")  {
+
+        tooltip.style("border-width", "8px");
+        tooltip.style("border-left-color", "#AED08E");
+
+      } else if (desiredPart === "southamerica")  {
+
+        tooltip.style("border-width", "8px");
+        tooltip.style("border-left-color", "#DF6687");
+
+      } else if (desiredPart === "australiaoceania")  {
+
+        tooltip.style("border-width", "8px");
+        tooltip.style("border-left-color", "#B47CB3");
+
+      }
+
+      const mainHeading = d.data.key;
+      const headings = ["Total Conflicts:", "Originator of Conflict:", "Use of force:", "Ending in war:"];
+      const values = [conflictsTotal, originatorCount, forceCount, warCount];
+
+      tooltip.select(".main-heading").text(mainHeading);
+
+      const quadrants = tooltip.selectAll(".quadrant");
+
+      quadrants.each((d, i) => {
+      const quadrant = d3.select(quadrants.nodes()[i]);
+      quadrant.select(".heading").text(headings[i]);
+      quadrant.select(".value").text(values[i]);
+        
+      });
+
+    tooltip.style("display", "block");
+
+      // Position tooltip near the mouse cursor
+      tooltip.style("left", (eventX +10) + "px")
+            .style("top", (eventY - 10) + "px");
+    });
+
+}
+
+function mouseouted(d) {
+  link
+      .classed("link--target", false)
+      .classed("link--source", false);
+
+  node
+      .classed("node--target", false)
+      .classed("node--source", false);
+
+       // Hide tooltip
+  const tooltip = d3.select("#tooltip");
+  tooltip.style("display", "none");
+
+}
+
+// Lazily construct the package hierarchy from class names.
+function packageHierarchy(classes) {
+  var map = {};
+
+  function find(name, data) {
+    var node = map[name], i;
+    if (!node) {
+      node = map[name] = data || {name: name, children: []};
+      if (name.length) {
+        node.parent = find(name.substring(0, i = name.lastIndexOf(".")));
+        node.parent.children.push(node);
+        node.key = name.substring(i + 1);
+      }
+    }
+    return node;
+  }
+
+
+  classes.forEach(function(d) {
+    find(d.name, d);
+  });
+  console.log(d3.hierarchy(map[""]));
+  return d3.hierarchy(map[""]);
+}
+
+// Return a list of imports for the given array of nodes.
+function packageImports(nodes) {
+  var map = {},
+      imports = [];
+
+  // Compute a map from name to node.
+  nodes.forEach(function(d) {
+    map[d.data.name] = d;
+  });
+
+  // For each import, construct a link from the source to target node.
+  nodes.forEach(function(d) {
+    if (d.data.imports) d.data.imports.forEach(function(i) {
+      imports.push(map[d.data.name].path(map[i]));
+    });
+  });
+
+  return imports;
+}
+
+</script>
+</body>
